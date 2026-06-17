@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HijriGregorian - Bidirectional Hijri-Gregorian Date Converter Tool</title>
+    <meta name="description" content="Instantly convert dates between the Gregorian calendar and Islamic Hijri calendar. Free, accurate, and mathematical dual-conversion tool.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "HijriGregorian - Bidirectional Hijri-Gregorian Date Converter Tool",
+      "url": "https://example-travel-brand.com/converter",
+      "description": "A high-precision mathematical tool to convert dates seamlessly between the solar Gregorian calendar and the lunar Islamic (Hijri) calendar.",
+      "applicationCategory": "Utility",
+      "operatingSystem": "All"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "How does the Hijri calendar differ from the Gregorian calendar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Gregorian calendar is a solar calendar based on the earth's revolution around the sun, lasting approximately 365.25 days. The Hijri calendar is a lunar calendar based on the phases of the moon, lasting approximately 354 days. This difference means Islamic dates shift by about 11 days each year relative to the Gregorian calendar."
+        }
+      }, {
+        "@type": "Question",
+        "name": "When does the Islamic day begin?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Unlike the Gregorian day which begins at midnight, the Islamic day officially begins at sunset."
+        }
+      }]
+    }
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                HijriGregorian
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="converter-container">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="tab-gregorian">Gregorian to Hijri</button>
+                <button class="tab-btn" data-tab="tab-hijri">Hijri to Gregorian</button>
+            </div>
+
+            <!-- Gregorian to Hijri -->
+            <div id="tab-gregorian" class="tab-content active">
+                <div class="form-group">
+                    <label for="gregorian-date">Select Gregorian Date</label>
+                    <input type="date" id="gregorian-date">
+                </div>
+                <div class="result-box">
+                    <h3>Hijri Equivalent</h3>
+                    <div class="result-value" id="hijri-result">...</div>
+                    <div class="source-badge" id="hijri-source"></div>
+                    <div class="note"><strong>Note:</strong> The Islamic day officially begins at sunset, not midnight. Powered by the Aladhan API (with offline mathematical fallback).</div>
+                </div>
+            </div>
+
+            <!-- Hijri to Gregorian -->
+            <div id="tab-hijri" class="tab-content">
+                <div class="form-group">
+                    <label>Select Hijri Date</label>
+                    <div class="input-row">
+                        <select id="hijri-day">
+                            <option value="" disabled selected>Day</option>
+                            <!-- Populated by JS -->
+                        </select>
+                        <select id="hijri-month">
+                            <option value="" disabled selected>Month</option>
+                            <!-- Populated by JS -->
+                        </select>
+                        <select id="hijri-year">
+                            <option value="" disabled selected>Year (AH)</option>
+                            <!-- Populated by JS -->
+                        </select>
+                    </div>
+                </div>
+                <div class="result-box">
+                    <h3>Gregorian Equivalent</h3>
+                    <div class="result-value" id="gregorian-result">...</div>
+                    <div class="source-badge" id="gregorian-source"></div>
+                    <div class="note"><strong>Note:</strong> Powered by the Aladhan API (with offline mathematical fallback). Actual regional religious observances may vary based on local crescent sightings.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Content Section -->
+        <section class="content-section">
+            <h1>Understanding the Hijri and Gregorian Calendars</h1>
+            <p>Welcome to our comprehensive Bidirectional Hijri-Gregorian Date Converter Tool. Whether you are a global traveler planning logistics, a pilgrim organizing your sacred journey for Hajj or Umrah, or someone who simply needs high-precision chronological translation, this mathematical utility provides instant and seamless date conversions.</p>
+
+            <h2>The Solar vs. Lunar Dynamics</h2>
+            <p>The core difference between these two systems lies in the celestial bodies they track. The Gregorian calendar is universally recognized as the primary civil calendar today. It is a solar calendar based on the Earth's revolution around the sun, consisting of 365 days (or 366 in leap years) divided into 12 months. This system ensures that the months correspond directly with the seasons.</p>
+            <p>In contrast, the Islamic or Hijri calendar is strictly a lunar calendar based on the phases of the moon. Each month begins with the first sighting of the new crescent moon. A lunar year is approximately 354 or 355 days long, which is roughly 11 days shorter than a solar year. Because of this 11-day deficit, Islamic dates and holidays migrate backwards through all the seasons of the solar year over a 33-year cycle.</p>
+            
+            <h2>How Our Mathematical Converter Works</h2>
+            <p>Our tool utilizes the renowned Tabular Islamic Calendar algorithm anchored by Julian Day Numbers (JDN). This ensures a high level of mathematical accuracy without needing continuous server pings. The system calculates the integer number of days elapsed since the calendar's epoch. For the Hijri calendar, the epoch (1 Muharram 1 AH) aligns with Friday, 16 July 622 CE (Civil Epoch). This precision calculation helps you plan effectively years in advance.</p>
+
+            <h2>Important Upcoming Islamic Holidays</h2>
+            <p>Below is a quick static reference table mapping major Islamic events. Keep in mind that while our mathematical conversions are precise, religious observances are traditionally governed by the physical sighting of the lunar crescent by regional authorities.</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Islamic Event</th>
+                        <th>Hijri Date</th>
+                        <th>Significance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Islamic New Year</td>
+                        <td>1 Muharram</td>
+                        <td>Marks the beginning of the new Hijri year and commemorates the Hijrah.</td>
+                    </tr>
+                    <tr>
+                        <td>Start of Ramadan</td>
+                        <td>1 Ramadan</td>
+                        <td>Month of fasting, prayer, reflection, and community.</td>
+                    </tr>
+                    <tr>
+                        <td>Eid al-Fitr</td>
+                        <td>1 Shawwal</td>
+                        <td>Festival of Breaking the Fast, marking the end of Ramadan.</td>
+                    </tr>
+                    <tr>
+                        <td>Day of Arafah</td>
+                        <td>9 Dhu al-Hijjah</td>
+                        <td>The holiest day in the Islamic year, central to the Hajj pilgrimage.</td>
+                    </tr>
+                    <tr>
+                        <td>Eid al-Adha</td>
+                        <td>10 Dhu al-Hijjah</td>
+                        <td>Festival of Sacrifice, marking the culmination of the annual Hajj pilgrimage.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Planning Your Travel Logistics</h2>
+            <p>For pilgrims and international travelers, managing dates between the solar and lunar calendars can be challenging. Booking flights, securing accommodations, and obtaining visas all rely on the Gregorian calendar, while the religious rites themselves strictly follow the Hijri calendar. We developed this lightweight, serverless tool precisely to bridge that gap, helping you synchronize your terrestrial plans with celestial rhythms effortlessly.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-col">
+                    <h4>About HijriGregorian</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">A lightweight, mathematically precise dual-calendar conversion tool designed for global travelers and pilgrims.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal & Compliance</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="sitemap.html">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 HijriGregorian Tool. All rights reserved. 
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/converter.js"></script>
+</body>
+</html>
